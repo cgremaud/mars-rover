@@ -21,7 +21,6 @@ describe("Message class", () =>{
     let command1 = new Command("MODE_CHANGE", 321)
     let commands = [command0, command1]
     let message = new Message("Move and Mode_Change", commands)
-    //this seems like it might be questionable. My logic is that if commands[0] exists and has a type of object, then commands must be an array of objects. 
     assert.strictEqual(typeof message.commands[0], "object")
   }) 
 })

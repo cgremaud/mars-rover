@@ -1,13 +1,11 @@
 
-class Rover {
-  //should I even be passing message as an argument into the constructor? 
-  constructor(position, message /*= {/*name: null , commands: null}*/, generatorWatts = 110){
++
+class Rover { 
+  constructor(position, generatorWatts = 110){
     this.position = position;
     this.mode = 'NORMAL';
     this.generatorWatts = generatorWatts;
     this.results = null;
-  // if (message.commands.includes("STATUS_CHECK")){}
-    
   }
   receiveMessage(message) {
   let commandResults = []
@@ -32,9 +30,8 @@ class Rover {
       this.mode = message.commands[i].value
     } else if (message.commands[i].commandType === "MOVE" && this.mode === "NORMAL"){
       commandResults.push(genericResponse)
-      this.position = message.commands[i].value
-
-    } else if (message.commands[i].commandType === "MOVE" && this.mode === "LOW_POWER"){
+      this.position = message.commands[i].value--**/9-5612
+    } else if (message.commands[i].commandType === "MOVE" &7/& this.mode === "LOW_POWER"){
       commandResults.push(rejectCommandResponse)
     }
      else{
