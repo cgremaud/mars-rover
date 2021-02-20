@@ -30,7 +30,13 @@ class Rover {
     } else if (message.commands[i].commandType === "MODE_CHANGE"){
       commandResults.push(modeChangeResponse)
       this.mode = message.commands[i].value
-    } else{
+    } else if (message.commands[i].commandType === "MOVE" && this.mode === "NORMAL"){
+      this.position = message.commands[i].value
+
+    } else if (message.commands[i].commandType === "MOVE" && this.mode === "LOW_POWER"){
+      commandResults.push(rejectCommandResponse)
+    }
+     else{
       commandResults.push(genericResponse)
     }
     
