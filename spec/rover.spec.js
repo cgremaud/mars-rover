@@ -53,7 +53,5 @@ describe("Rover class", () => {
     let messageInput = new Message("Mode change and move", commands)
     let results = rover.receiveMessage(messageInput).results
     assert.strictEqual(results[1].completed, false)
-
   })
-
 })
