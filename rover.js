@@ -31,6 +31,7 @@ class Rover {
       commandResults.push(modeChangeResponse)
       this.mode = message.commands[i].value
     } else if (message.commands[i].commandType === "MOVE" && this.mode === "NORMAL"){
+      commandResults.push(genericResponse)
       this.position = message.commands[i].value
 
     } else if (message.commands[i].commandType === "MOVE" && this.mode === "LOW_POWER"){

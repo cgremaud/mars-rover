@@ -8,7 +8,7 @@ describe("Rover class", () => {
     assert.strictEqual((rover.generatorWatts === 110 && rover.position === 120 && rover.mode === "NORMAL"), true)
   })
   it('response returned by receiveMessage contains name of message', () => {
-    let command = new Command("MOVE", 120)
+    let command = new Command("MOVE", 122)
     let messageInput = new Message('Message Name', [command]);
     let rover = new Rover(120)
     let messageOutput = rover.receiveMessage(messageInput)
@@ -17,9 +17,9 @@ describe("Rover class", () => {
   it('response returned by receiveMessage includes two results if two commands are sent in the message', () =>{
     
     let command0 = new Command("MOVE", 123);
-    let command1 = new Command("MODE_CHANGE", "LOW_POWER");
+    let command1 = new Command("STATUS_CHECK");
     let messageInput = new Message('Message Name', [command0, command1]);
-    let rover = new Rover(120, messageInput)
+    let rover = new Rover(120)
     let messageOutput = rover.receiveMessage(messageInput);
     assert.strictEqual(messageOutput.results.length, 2)
   })
