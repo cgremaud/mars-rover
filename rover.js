@@ -1,8 +1,8 @@
 class Rover { 
-  constructor(position, generatorWatts = 110){
+  constructor(position){
     this.position = position;
     this.mode = 'NORMAL';
-    this.generatorWatts = generatorWatts;
+    this.generatorWatts = 110;
     this.results = null;
   }
   receiveMessage(message) {
