@@ -45,5 +45,15 @@ describe("Rover class", () => {
     rover.receiveMessage(messageInput)
     assert.strictEqual(rover.mode, "LOW_POWER")
   })
+  it("responds with false completed value when attempting to move in LOW_POWER mode", () => {
+    let modeChange = new Command("MODE_CHANGE", "LOW_POWER")
+    let move = new Command("MOVE", 121)
+    let rover = new Rover(120)
+    let commands = [modeChange, move]
+    let messageInput = new Message("Mode change and move", commands)
+    let results = rover.receiveMessage(messageInput).results
+    assert.strictEqual(results[1].completed, false)
+
+  })
 
 })

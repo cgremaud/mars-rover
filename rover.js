@@ -18,6 +18,9 @@ class Rover {
   let modeChangeResponse = {
     completed: true, 
   }
+  let rejectCommandResponse = {
+    completed: false
+  }
   let genericResponse = {
     completed: true,
   }
