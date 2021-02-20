@@ -14,7 +14,7 @@ describe("Rover class", () => {
     let messageInput = new Message('Message Name', [command]);
     let rover = new Rover(120)
     let messageOutput = rover.receiveMessage(messageInput)
-    assert.strictEqual(messageOutput.name, messageInput.name)
+    assert.strictEqual(messageOutput.message, messageInput.name)
   })
   it('response returned by receiveMessage includes two results if two commands are sent in the message', () =>{
     
@@ -29,10 +29,16 @@ describe("Rover class", () => {
   it('responds correctly to status check command', () => {
     let statusCheck = new Command("STATUS_CHECK")
     let messageInput = new Message("Status Check", [statusCheck])
-    let rover = new Rover(120, messageInput);
+    let rover = new Rover(120);
     let results = rover.receiveMessage(messageInput).results
+    let expectedResults =[
+      {
+         completed: true,
+         roverStatus: { mode: 'NORMAL', generatorWatts: 110, position: 120 }
+      }
+   ]
     //really don't know what to put here.  
     //should I use results[0].name 
-    assert.strictEqual(results[0].name, 'statusCheck')
+    assert.strictEqual(results, expectedResults)
   })
 })
