@@ -55,11 +55,11 @@ describe("Rover class", () => {
     assert.strictEqual((results[1].completed === false), (rover.position === 120)) 
   })
   it("responds with position for move command", () => {
-    let move = new Command("MOVE", 121)
-    let rover = new Rover(120)
+    let move = new Command("MOVE", 120)
+    let rover = new Rover(0)
     let message = new Message("Move", [move])
     rover.receiveMessage(message)
-    assert.strictEqual(rover.position, 121)
+    assert.strictEqual(rover.position, 120)
   })
   it("responds with a false and a message for an unknown command", () => {
     let falseCommand = new Command("STUPID_ROVER", "U_SUCK")
