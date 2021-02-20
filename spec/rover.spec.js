@@ -9,7 +9,7 @@ describe("Rover class", () => {
     //nm now it works? Still seems like doing too much in 1 test.  
     assert.strictEqual((rover.generatorWatts === 110 && rover.position === 120 && rover.mode === "NORMAL"), true)
   })
-  it('response returned by receiveMessage contains name of message', () => {
+  fit('response returned by receiveMessage contains name of message', () => {
     let command = new Command("MOVE", 120)
     let messageInput = new Message('Message Name', [command]);
     let rover = new Rover(120)
@@ -27,12 +27,18 @@ describe("Rover class", () => {
   })
   //I THINK this is testing for the right thing. But not sure if they want it set up to be results[0].name
   it('responds correctly to status check command', () => {
+    let modeChange = new Command("MODE_CHANGE", "LOW_POWER")
     let statusCheck = new Command("STATUS_CHECK")
-    let messageInput = new Message("Status Check", [statusCheck])
+    let messageInput = new Message("Status check test message", [statusCheck, modeChange])
     let rover = new Rover(120, messageInput);
     let results = rover.receiveMessage(messageInput).results
-    //really don't know what to put here.  
-    //should I use results[0].name 
+    let expectedResults = [
+      {
+         completed: true,
+         roverStatus: { mode: 'LOW_POWER', generatorWatts: 110, position: 98382 }
+      }
+   ]
+    //results should be an array of objects that all have the property .name, right? Or am I misunderstanding what receiveMessage should return? 
     assert.strictEqual(results[0].name, 'statusCheck')
   })
 })
