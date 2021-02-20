@@ -39,6 +39,6 @@ describe("Rover class", () => {
    ]
     //really don't know what to put here.  
     //should I use results[0].name 
-    assert.strictEqual(results, expectedResults)
+    assert.deepStrictEqual(results, expectedResults)
   })
 })

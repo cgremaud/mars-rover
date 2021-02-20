@@ -13,7 +13,7 @@ class Rover {
   let commandResults = []
   let statusCheckResponse = {
     completed: true,
-    roverStatus: {mode: "NORMAL", generatorWatts: 110, position: 120}
+    roverStatus: {mode: this.mode, generatorWatts: this.generatorWatts, position: this.position}
   }
   let modeChangeResponse = {
     completed: true, 
@@ -31,7 +31,7 @@ class Rover {
     }
     
   }
-  let outputMessage ={
+  let outputMessage = {
     message: message.name,
     results: commandResults
   }
