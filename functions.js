@@ -7,7 +7,7 @@ function createRoverInstance(position){
   return new Rover(position)
 }
 
-updatePosition(newPosition){
+function updatePosition(newPosition){
   // let newPosition = input.question("Enter new position: ")
   let updatePosition = new Command("MOVE", newPosition)
   return updatePosition 
@@ -15,22 +15,25 @@ updatePosition(newPosition){
 
 function promptUser(rover){
   let userCommand 
-  let numCommands 
-  let commandsArray
-  for (let i = 0; i < numCommands -1; i++)  
-    userCommand = input.question("[P]: Update Position, [M]: Mode Change, [S]: Status Check, [Q]: Quit\nWhat will you do?: ")
+  let numCommands = input.question("Enter a number of commands to send in a message: ")
+  let commandsArray = []
+  userCommand = input.question("[P]: Update Position, [M]: Mode Change, [S]: Status Check, [Q]: Quit\nWhat will you do?: ").toUpperCase()
+  for (let i = 0; i < numCommands; i++){  
+
     if (userCommand === "P"){
-      let userPosition = input.question("")
-      commandsArray.push(updatePosition(r))
+      let userPosition = input.question("Enter a position: ")
+      commandsArray.push(updatePosition(userPosition))
+      
     } else if (userCommand === "M"){
 
     } else if (userCommand === "S"){
 
     } else if (userCommand === "Q"){
 
-    } else {
-      
     }
+    userCommand = input.question("[P]: Update Position, [M]: Mode Change, [S]: Status Check, [Q]: Quit\nWhat will you do?: ").toUpperCase()
+  }
+  return commandsArray
     //return userCommand.toUpperCase()
 }
 

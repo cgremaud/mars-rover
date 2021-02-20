@@ -23,4 +23,5 @@ const functions = require("./functions.js")
 const input = require('readline-sync')
 
 let initialRover = new Rover
-functions.promptUser(initialRover)
+let prompt = functions.promptUser()
+console.log(prompt)
