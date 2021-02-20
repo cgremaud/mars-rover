@@ -26,6 +26,7 @@ class Rover {
       commandResults.push(statusCheckResponse)
     } else if (message.commands[i].commandType === "MODE_CHANGE"){
       commandResults.push(modeChangeResponse)
+      this.mode = message.commands[i].value
     } else{
       commandResults.push(genericResponse)
     }
