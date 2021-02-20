@@ -20,6 +20,10 @@ class Rover {
   let genericResponse = {
     completed: true,
   }
+  let unknownCommandResponse = {
+      completed: false,
+      message: "Error: Unrecognized Command"
+  }
   for (let i = 0; i < message.commands.length; i++){
     if (message.commands[i].commandType === "STATUS_CHECK"){
       commandResults.push(statusCheckResponse)
@@ -31,9 +35,8 @@ class Rover {
       this.position = message.commands[i].value
     } else if (message.commands[i].commandType === "MOVE" && this.mode === "LOW_POWER"){
       commandResults.push(rejectCommandResponse)
-    }
-     else{
-      commandResults.push(genericResponse)
+    } else{
+      commandResults.push(unknownCommandResponse)
     }
   }
   let outputMessage = {

@@ -52,6 +52,27 @@ describe("Rover class", () => {
     let commands = [modeChange, move]
     let messageInput = new Message("Mode change and move", commands)
     let results = rover.receiveMessage(messageInput).results
-    assert.strictEqual(results[1].completed, false)
+    assert.strictEqual((results[1].completed === false), (rover.position === 120)) 
+  })
+  it("responds with position for move command", () => {
+    let move = new Command("MOVE", 121)
+    let rover = new Rover(120)
+    let message = new Message("Move", [move])
+    rover.receiveMessage(message)
+    assert.strictEqual(rover.position, 121)
+  })
+  it("responds with a false and a message for an unknown command", () => {
+    let falseCommand = new Command("STUPID_ROVER", "U_SUCK")
+    let message = new Message("False command", [falseCommand])
+    let rover = new Rover(120)
+    let results = rover.receiveMessage(message).results
+    let expectedResults = [
+      {
+        completed: false,
+        message: "Error: Unrecognized Command"
+      }
+    ]
+    assert.deepStrictEqual(results, expectedResults)
+
   })
 })
