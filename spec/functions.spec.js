@@ -8,3 +8,6 @@ const input = require('readline-sync')
 //   it("")
 
 // })
+
+//promptUser should return a Message with the array of commands that were input
+//or should I break it into promptUser returns a command, and build array returns a message? 
