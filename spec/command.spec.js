@@ -19,9 +19,11 @@ describe("Command class", () => {
     assert.strictEqual(command.commandType, command2.commandType)
   })
   it("constructor sets a value passed in as the 2nd argument", () => {
+    //this test doesn't really fit the actual/expected framework. 
     let command = new Command("MOVE", 123)
-    let command2 = new Command("MODE_CHANGE", 123)
-    assert.strictEqual(command.value, command2.value)
+    // let command2 = new Command("MODE_CHANGE", 123)
+    //assert.strictEqual(command.value, command2.value)
+    assert.strictEqual(command.value, 123)
   })
 
 });

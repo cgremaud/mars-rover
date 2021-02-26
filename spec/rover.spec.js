@@ -32,7 +32,8 @@ describe("Rover class", () => {
     let expectedResults =[
       {
          completed: true,
-         roverStatus: { mode: 'NORMAL', generatorWatts: 110, position: 120 }
+         roverStatus: { mode: 'NORMAL', generatorWatts: 110, 
+         position: 120 }
       }
    ]
     assert.deepStrictEqual(results, expectedResults)
