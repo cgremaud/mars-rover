@@ -26,7 +26,7 @@ function createMessage(array){
   return new Message(userMessage, array)
 }
 
-function promptUser(rover){
+function promptUser(){
   let userCommand 
   let numCommands = input.question("Enter a number of commands to send in a message: ")
   let commandsArray = []
@@ -48,9 +48,12 @@ function promptUser(rover){
     } else if (userCommand === "Q"){
         break
     }
-    // userCommand = input.question("[P]: Update Position, [M]: Mode Change, [S]: Status Check, [Q]: Quit\nWhat will you do?: ").toUpperCase()
+ 
   }
-  return commandsArray
+  let message = createMessage(commandsArray)
+  rover = createRoverInstance(100)
+  rover.receiveMessage(message)
+  return rover
     //return userCommand.toUpperCase()
 }
 

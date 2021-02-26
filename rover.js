@@ -11,6 +11,7 @@ class Rover {
     completed: true,
     roverStatus: {mode: this.mode, generatorWatts: this.generatorWatts, position: this.position}
   }
+  //not necessary to have this var might delete. 
   let modeChangeResponse = {
     completed: true, 
   }
