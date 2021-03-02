@@ -15,7 +15,6 @@ describe("Rover class", () => {
     assert.strictEqual(messageOutput.message, messageInput.name)
   })
   it('response returned by receiveMessage includes two results if two commands are sent in the message', () =>{
-    
     let command0 = new Command("MOVE", 123);
     let command1 = new Command("STATUS_CHECK");
     let messageInput = new Message('Message Name', [command0, command1]);
@@ -53,6 +52,7 @@ describe("Rover class", () => {
     let commands = [modeChange, move]
     let messageInput = new Message("Mode change and move", commands)
     let results = rover.receiveMessage(messageInput).results
+    //make 2 separate assert statements. 
     assert.strictEqual((results[1].completed === false), (rover.position === 120)) 
   })
   it("responds with position for move command", () => {
