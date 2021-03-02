@@ -53,7 +53,8 @@ describe("Rover class", () => {
     let messageInput = new Message("Mode change and move", commands)
     let results = rover.receiveMessage(messageInput).results
     //make 2 separate assert statements. 
-    assert.strictEqual((results[1].completed === false), (rover.position === 120)) 
+    assert.strictEqual(results[1].completed, false)
+    assert.strictEqual(rover.position, 120)
   })
   it("responds with position for move command", () => {
     let move = new Command("MOVE", 121)
